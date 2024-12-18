@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class VoteController extends Controller
 {
+    public function index()
+    {
+        if (!Auth::check()) {
+            return redirect('/login')->with('error', 'Anda harus login terlebih dahulu!');
+        }
+
+        return view('vote');
+    }
+
     public function store(Request $request)
     {
         if (!Auth::check()) {
