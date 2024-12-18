@@ -11,7 +11,7 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    
+
     public function login(Request $request)
     {
         $request->validate([
@@ -29,7 +29,7 @@ class AuthController extends Controller
 
         Auth::login($user, true);
 
-        return redirect()->route('vote');
+        return Redirect::intended('/vote');
     }
 
     // Handle user registration
@@ -48,7 +48,15 @@ class AuthController extends Controller
 
         Auth::login($user, true);
 
-        return redirect()->route('vote');
+        return redirect()->route('/vote');
+    }
+
+    // Handle user logout
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }
 
