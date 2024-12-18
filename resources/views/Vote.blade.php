@@ -6,9 +6,9 @@
     <title>Surat Suara BPH DPC Kaliabang 2025-2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen p-4">
-    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+<body class="bg-gray-100 min-h-screen">
 
+    <div id="pemilu-card" class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <!-- Header Section -->
         <div class="relative bg-blue-600 text-white p-6">
             <div class="absolute top-4 left-4 text-yellow-300 font-bold">
@@ -45,9 +45,12 @@
                     <div class="text-center p-4">
                         <p class="text-gray-600">CALON KETUA & WAKIL KETUA</p>
                         <h1 class="font-bold text-gray-900 text-lg mb-2">ISNAN ADAM</h1>
-                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
-                            VOTE!
-                        </button>
+                        <form action="{{ route('vote.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="paslon" value="1">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
+                                VOTE!
+                            </button>
                     </div>
                 </div>
             </div>
@@ -60,9 +63,14 @@
                     <div class="text-center p-4">
                         <p class="text-gray-600">CALON KETUA & WAKIL KETUA</p>
                         <h1 class="font-bold text-gray-900 text-lg mb-2">JUWITA ARILIA</h1>
-                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
-                            VOTE!
-                        </button>
+                        <form action="{{ route('vote.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="paslon" value="2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
+                                VOTE!
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>
