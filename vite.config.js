@@ -5,10 +5,11 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/*.css', // Includes all CSS files in the folder
-                'resources/js/*.js',   // Includes all JS files in the folder
+                'resources/css/app.css', // Specify exact CSS file
+                'resources/js/app.js',   // Specify exact JS file
             ],
             refresh: true,
         }),
     ],
 });
+

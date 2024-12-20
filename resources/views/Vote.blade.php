@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Suara BPH DPC Kaliabang 2025-2026</title>
+    <title>HIMVOTE</title>
     <script src="{{ asset('js/apexcharts.min.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 min-h-screen">
 
     <div id="pemilu-card" class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <div style="position: fixed; z-index: 10; top: 1rem; right: 1rem" class="bg-white p-4 rounded-lg shadow-lg">
         </div>
-        <p>{{ $voteCount }}</p>
         <!-- Header Section -->
         <div class="relative bg-blue-600 text-white p-6">
             <div class="absolute top-4 left-4 text-yellow-300 font-bold">
@@ -28,7 +29,8 @@
                 </div>
             </div>
             <!-- White wave decoration -->
-            <div class="absolute bottom-0 left-0 right-0 h-12 bg-white" style="clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%, 0 100%);"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-12 bg-white"
+                style="clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%, 0 100%);"></div>
         </div>
 
         <!-- Main Title -->
@@ -42,14 +44,16 @@
         <!-- Candidate Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
             <!-- Candidate 1 -->
-            <div class="border-t-2 border-l-2 border-r-2 border-gray-300 rounded-lg overflow-hidden bg-blue-50 shadow-md hover:shadow-lg transition">
+            <div
+                class="border-t-2 border-l-2 border-r-2 border-gray-300 rounded-lg overflow-hidden bg-blue-50 shadow-md hover:shadow-lg transition">
                 <div class="text-center text-3xl font-bold p-2 border-b-2 bg-blue-700 text-white">1</div>
                 <div>
                     <img src="/Images/paslon1.jpg" class="object-cover w-full h-full aspect-square" alt="Paslon 1">
                     <div class="text-center p-4">
                         <p class="text-gray-600">CALON KETUA & WAKIL KETUA</p>
                         <h1 class="font-bold text-gray-900 text-lg mb-2">ISNAN ADAM</h1>
-                        <button onclick="openModal('Isnan Adam', 1)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
+                        <button onclick="openModal('Isnan Adam', 1)"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
                             VOTE!
                         </button>
                     </div>
@@ -57,14 +61,16 @@
             </div>
 
             <!-- Candidate 2 -->
-            <div class="border-t-2 border-l-2 border-r-2 border-gray-300 rounded-lg overflow-hidden bg-blue-50 shadow-md hover:shadow-lg transition">
+            <div
+                class="border-t-2 border-l-2 border-r-2 border-gray-300 rounded-lg overflow-hidden bg-blue-50 shadow-md hover:shadow-lg transition">
                 <div class="text-center text-3xl font-bold p-2 border-b-2 bg-blue-700 text-white">2</div>
                 <div>
                     <img src="/Images/paslon2.jpg" class="object-cover w-full h-full aspect-square" alt="Paslon 2">
                     <div class="text-center p-4">
                         <p class="text-gray-600">CALON KETUA & WAKIL KETUA</p>
                         <h1 class="font-bold text-gray-900 text-lg mb-2">JUWITA ARILIA</h1>
-                        <button onclick="openModal('Juwita Arilia', 2)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
+                        <button onclick="openModal('Juwita Arilia', 2)"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">
                             VOTE!
                         </button>
                     </div>
@@ -73,63 +79,69 @@
         </div>
     </div>
     <div id="Chart" class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden p-4">
-            <!-- Header -->
-            <h1 class="text-3xl font-bold mb-2 text-blue-600">HIMVOTE 2025-2026</h1>
+        <!-- Header -->
+        <h1 class="text-3xl font-bold mb-2 text-blue-600 text-center">HIMVOTE 2025-2026</h1>
 
-            <!-- Dropdown Button -->
-            <button class="w-full bg-blue-600 text-white py-3 px-4 rounded-md text-left mb-6 flex justify-between items-center">
-                <span class="text-lg font-semibold">DPC KALIABANG</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </button>
+        <!-- Dropdown Button -->
+        <button
+            class="w-full bg-blue-600 text-white py-3 px-4 rounded-md text-left mb-6 flex justify-between items-center">
+            <span class="text-lg font-semibold">DPC KALIABANG</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
 
-            <!-- Candidate List -->
-            <div class="space-y-4">
-                <!-- Candidate 1 -->
-                <div class="bg-white rounded-lg p-4 flex items-center justify-between shadow-sm">
-                    <div class="flex items-center gap-4">
-                        <span class="text-2xl text-gray-400">1</span>
-                        <div>
-                            <div class="font-semibold">Isnan Adam </div>
-                        </div>
+        <!-- Candidate List -->
+        <div class="space-y-4">
+            <!-- Candidate 1 -->
+            <div class="bg-white rounded-lg p-4 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl text-gray-400">1</span>
+                    <div>
+                        <div class="font-semibold">Isnan Adam </div>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <div class="flex flex-col items-center justify-center">
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-center justify-center">
                         <span class="text-2xl text-blue-600 font-bold">{{ $paslon1Percentage }}%</span>
-                        </div>
-                        <div class="w-24 h-24 overflow-hidden rounded-full">
-                            <img src="{{ asset('Images/paslon1.jpg') }}" alt="Isnan Adam" class="w-full h-full object-cover">
-                        </div>
                     </div>
-                </div>
-
-                <!-- Candidate 2 -->
-                <div class="bg-white rounded-lg p-4 flex items-center justify-between shadow-sm">
-                    <div class="flex items-center gap-4">
-                        <span class="text-2xl text-gray-400">2</span>
-                        <div>
-                            <div class="font-semibold">Juwita Arilia</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <span class="text-2xl text-blue-600 font-bold">{{ $paslon2Percentage }}%</span>
-                        <div class="w-24 h-24 overflow-hidden rounded-full">
-                            <img src="{{ asset('Images/paslon2.jpg') }}" alt="Juwita Arilia" class="w-full h-full object-cover">
-                        </div>
+                    <div class="w-24 h-24 overflow-hidden rounded-full">
+                        <img src="{{ asset('Images/paslon1.jpg') }}" alt="Isnan Adam"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
 
-            <!-- Total -->
-            <div class="mt-4 flex justify-between items-center text-sm text-gray-600">
-                <span>Total Suara Masuk</span>
-                <span>{{ $paslon1 + $paslon2 }}</span>
+            <!-- Candidate 2 -->
+            <div class="bg-white rounded-lg p-4 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl text-gray-400">2</span>
+                    <div>
+                        <div class="font-semibold">Juwita Arilia</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl text-blue-600 font-bold">{{ $paslon2Percentage }}%</span>
+                    <div class="w-24 h-24 overflow-hidden rounded-full">
+                        <img src="{{ asset('Images/paslon2.jpg') }}" alt="Juwita Arilia"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
             </div>
-            <div class="w-full bg-blue-600 h-2 rounded-full mt-2"></div>
+        </div>
+
+        <!-- Total -->
+        <div class="mt-4 flex justify-between items-center text-sm text-gray-600">
+            <span>Total Suara Masuk</span>
+            <span>{{ $paslon1 + $paslon2 }}</span>
+        </div>
+        <div class="w-full bg-blue-600 h-2 rounded-full mt-2"></div>
     </div>
     <!-- Modal -->
-    <div id="confirmation-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden">
+    <div id="confirmation-modal"
+        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden">
         <div class="bg-white rounded-lg shadow-lg p-6 w-96">
             <h3 id="candidate-name" class="text-xl font-bold text-center mb-4"></h3>
             <p class="text-center mb-4">Apakah Anda yakin memilih calon ini?</p>
@@ -139,18 +151,21 @@
                 <input type="hidden" name="latitude" id="latitude" value="">
                 <input type="hidden" name="longitude" id="longitude" value="">
                 <div class="flex justify-between">
-                    <button type="button" onclick="closeModal()" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+                    <button type="button" onclick="closeModal()"
+                        class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
                         Batal
                     </button>
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Ya, Pilih
                     </button>
                 </div>
             </form>
         </div>
     </div>
-    @if(session('error'))
-        <div id="error-alert" class="alert-card fixed top-20 left-1/2 transform -translate-x-1/2 w-3/4 max-w-lg z-10 p-4 bg-red-500 text-white rounded-lg shadow-lg opacity-90 transition-opacity duration-500 ease-in-out">
+    @if (session('error'))
+        <div id="error-alert"
+            class="alert-card fixed top-20 left-1/2 transform -translate-x-1/2 w-3/4 max-w-lg z-10 p-4 bg-red-500 text-white rounded-lg shadow-lg opacity-90 transition-opacity duration-500 ease-in-out">
             {{ session('error') }}
         </div>
         <script>
@@ -164,8 +179,9 @@
     @endif
 
     <!-- Display success message if exists -->
-    @if(session('success'))
-        <div id="success-alert" class="alert-card fixed top-20 left-1/2 transform -translate-x-1/2 w-3/4 max-w-lg z-10 p-4 bg-green-500 text-white rounded-lg shadow-lg opacity-90 transition-opacity duration-500 ease-in-out">
+    @if (session('success'))
+        <div id="success-alert"
+            class="alert-card fixed top-20 left-1/2 transform -translate-x-1/2 w-3/4 max-w-lg z-10 p-4 bg-green-500 text-white rounded-lg shadow-lg opacity-90 transition-opacity duration-500 ease-in-out">
             {{ session('success') }}
         </div>
         <script>
@@ -178,79 +194,46 @@
         </script>
     @endif
     <script>
-        let pemiluCard = document.getElementById('pemilu-card');
-        let chart = document.getElementById('Chart');
-        let hasVoted = '{{ $hasVoted }}' === '1';
+        document.addEventListener('DOMContentLoaded', function() {
+            const pemiluCard = document.getElementById('pemilu-card');
+            const chart = document.getElementById('Chart');
+            const hasVoted = '{{ $hasVoted }}' === '1';
 
-        if (hasVoted) {
-            pemiluCard.classList.add('hidden');
-            chart.classList.remove('hidden');
-        } else {
-            pemiluCard.classList.remove('hidden');
-            chart.classList.add('hidden');
-        }
+            pemiluCard.classList.toggle('hidden', hasVoted);
+            chart.classList.toggle('hidden', !hasVoted);
 
-        function openModal(candidateName, paslonId) {
-            document.getElementById('candidate-name').textContent = 'Anda akan memilih ' + candidateName;
-            document.getElementById('paslon-id').value = paslonId;
-            document.getElementById('confirmation-modal').classList.remove('hidden');
-        }
+            const modal = document.getElementById('confirmation-modal');
+            const candidateNameElement = document.getElementById('candidate-name');
+            const paslonIdElement = document.getElementById('paslon-id');
 
-        function closeModal() {
-            document.getElementById('confirmation-modal').classList.add('hidden');
-        }
+            window.openModal = function(candidateName, paslonId) {
+                candidateNameElement.textContent = `Anda akan memilih ${candidateName}`;
+                paslonIdElement.value = paslonId;
+                modal.classList.remove('hidden');
+            };
 
-        let userCoordinates = { latitude: null, longitude: null };
+            window.closeModal = function() {
+                modal.classList.add('hidden');
+            };
 
-        function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(storeCoordinates, showError);
+                navigator.geolocation.getCurrentPosition(position => {
+                    document.getElementById('latitude').value = position.coords.latitude;
+                    document.getElementById('longitude').value = position.coords.longitude;
+                }, error => {
+                    alert(`Geolocation error: ${error.message}`);
+                });
             } else {
                 alert("Geolocation is not supported by this browser.");
             }
-        }
 
-        function storeCoordinates(position) {
-            userCoordinates.latitude = position.coords.latitude;
-            userCoordinates.longitude = position.coords.longitude;
-
-            console.log("Latitude: " + userCoordinates.latitude);
-            console.log("Longitude: " + userCoordinates.longitude);
-
-            document.getElementById('latitude').value = userCoordinates.latitude;
-            document.getElementById('longitude').value = userCoordinates.longitude;
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-            }
-        }
-
-        window.onload = getLocation;
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
             const pemiluElement = document.querySelector("#Pemilu");
-
             if (pemiluElement) {
                 const options = {
                     series: [44, 55, 13, 43, 22],
                     chart: {
                         width: 380,
-                        type: 'pie',
+                        type: 'pie'
                     },
                     labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
                     responsive: [{
@@ -265,9 +248,7 @@
                         }
                     }]
                 };
-
-                const chart = new ApexCharts(pemiluElement, options);
-                chart.render();
+                new ApexCharts(pemiluElement, options).render();
             } else {
                 console.error("Element #Pemilu not found in the DOM.");
             }
@@ -275,4 +256,5 @@
     </script>
 
 </body>
+
 </html>

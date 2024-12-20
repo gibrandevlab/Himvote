@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a9372b1ff7.js" crossorigin="anonymous"></script>
-    @vite('resources/css/login.css')
-    @vite('resources/js/app.js')
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
     <title>Himvote</title>
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="/login" method="post" class="sign-in-form">
+          <form action="{{ route('login') }}" method="post" class="sign-in-form">
             @csrf
             <h2 class="title">Login</h2>
             <div class="input-field">
@@ -41,7 +41,7 @@
             </div>
           </form>
 
-          <form action="/register" method="post" class="sign-up-form">
+          <form action="{{ route('register') }}" method="post" class="sign-up-form">
             @csrf
             <h2 class="title">Register</h2>
             <div class="input-field">

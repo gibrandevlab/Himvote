@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use App\Models\Notification;
 
 class AuthController extends Controller
 {
-
     public function login(Request $request)
     {
         $request->validate([
@@ -21,42 +21,55 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+        if ($user && Hash::check($request->password, $user->password)) {
+            Auth::login($user);
+
+            Notification::create([
+                'user_id' => $user->id,
+                'notification' => 'Pengguna melakukan login',
             ]);
+
+            return redirect()->intended('dashboard');
         }
 
-        Auth::login($user, true);
-
-        return Redirect::intended('/vote');
+        throw ValidationException::withMessages([
+            'email' => [trans('auth.failed')],
+        ]);
     }
 
-    // Handle user registration
     public function register(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:6',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
         ]);
 
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'member',
         ]);
 
-        Auth::login($user, true);
+        Notification::create([
+            'user_id' => $user->id,
+            'notification' => 'Pengguna melakukan pendaftaran',
+        ]);
 
-        return redirect()->route('/vote');
+        Auth::login($user);
+
+        return redirect()->intended('dashboard');
     }
 
-    // Handle user logout
-    public function logout()
+    public function logout(Request $request)
     {
+        $user = Auth::user();
+
         Auth::logout();
+
+        Notification::create([
+            'user_id' => $user->id,
+            'notification' => 'Pengguna melakukan logout',
+        ]);
 
         return redirect('/');
     }
 }
-

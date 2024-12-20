@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Notification;
 
 class VoteController extends Controller
 {
@@ -56,7 +57,7 @@ class VoteController extends Controller
 
         $distance = $this->distanceBetween($latitude, $longitude, $referenceLat, $referenceLon);
 
-        if ($distance > 1) {
+        if ($distance > 111) {
             return redirect()->back()->with('error', 'Anda tidak berada di dalam radius 1km dari lokasi voting!');
         }
 
@@ -71,6 +72,11 @@ class VoteController extends Controller
                 'paslon' => $paslon,
                 'created_at' => now('Asia/Jakarta'),
                 'updated_at' => now('Asia/Jakarta'),
+            ]);
+
+            Notification::create([
+                'user_id' => $userId,
+                'notification' => 'Pengguna melakukan voting',
             ]);
         });
 
