@@ -47,7 +47,7 @@ class DashboardController extends Controller
             'universitas' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
-            'nim' => 'required',
+            'nim' => 'nullable', // NIM is optional now
             'nomor_telpon' => 'required',
             'pekerjaan' => 'required',
             'divisi' => 'required',
@@ -59,15 +59,32 @@ class DashboardController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'token' => $request->token,
+            'token' => str_pad(mt_rand(0, 9999), 4, '0', STR_PAD_LEFT),
         ]);
 
-        $user->member()->create($request->only([
-            'universitas', 'nama', 'alamat', 'nim', 'nomor_telpon', 'pekerjaan', 'divisi', 'jabatan', 'periode'
-        ]));
+        if (!$user) {
+            return redirect()->back()->withErrors(['msg' => 'Failed to create user']);
+        }
+
+        $member = $user->member()->create([
+            'universitas' => $request->universitas,
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'nim' => $request->nim,  // Make sure NIM is nullable
+            'nomor_telpon' => $request->nomor_telpon,
+            'pekerjaan' => $request->pekerjaan,
+            'divisi' => $request->divisi,
+            'jabatan' => $request->jabatan,
+            'periode' => $request->periode,
+        ]);
+
+        if (!$member) {
+            return redirect()->back()->withErrors(['msg' => 'Failed to create member details']);
+        }
 
         return redirect()->route('dashboard.index')->with('success', 'User created successfully.');
     }
+
 
     public function userUpdate(Request $request, $id)
     {

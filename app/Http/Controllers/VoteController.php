@@ -48,8 +48,8 @@ class VoteController extends Controller
         $longitude = $request->input('longitude');
         $userId = Auth::id();
 
-        $referenceLat = -6.249112638111282;
-        $referenceLon = 107.01039914147589;
+        $referenceLat = -6.249117976950397;
+        $referenceLon = 107.01034013743455;
 
         if (is_null($latitude) || is_null($longitude)) {
             return redirect()->back()->with('error', 'Lokasi Anda tidak dapat di deteksi!');
@@ -57,7 +57,7 @@ class VoteController extends Controller
 
         $distance = $this->distanceBetween($latitude, $longitude, $referenceLat, $referenceLon);
 
-        if ($distance > 111) {
+        if ($distance > 1) {
             return redirect()->back()->with('error', 'Anda tidak berada di dalam radius 1km dari lokasi voting!');
         }
 

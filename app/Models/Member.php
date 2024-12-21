@@ -22,9 +22,15 @@ class Member extends Model
         'periode',
     ];
 
-    // Relasi ke tabel users
+    protected $casts = [
+        'nim' => 'string',
+        'divisi' => 'string',
+        'jabatan' => 'string',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 }
+

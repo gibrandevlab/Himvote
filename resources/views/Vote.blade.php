@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIMVOTE</title>
+    <title>HimVote</title>
+    <link rel="icon" href="{{ asset('Images/himsi.jpg') }}" type="image/jpeg">
     <script src="{{ asset('js/apexcharts.min.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -77,6 +78,16 @@
                 </div>
             </div>
         </div>
+        <footer class="bg-blue-800 py-6 text-center mt-12">
+            <p class="text-gray-200 text-sm">
+                &copy; 2023
+                <a href="https://www.instagram.com/afwan.gibran_/" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">
+                    Himvote
+                </a>.
+                Dibuat oleh <a href="https://www.instagram.com/afwan.gibran_/" target="_blank" rel="noopener noreferrer" class="text-white hover:underline">seseorang</a>. Semua hak dilindungi.
+            </p>
+        </footer>
+
     </div>
     <div id="Chart" class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden p-4">
         <!-- Header -->

@@ -159,7 +159,8 @@
                 <h2 class="text-2xl font-bold mb-6">Manage Users</h2>
 
                 <!-- Create User Button -->
-                <button onclick="toggleModal('createUserModal')" class="bg-blue-500 text-white px-4 py-2 rounded mb-6">Create User</button>
+                <button onclick="toggleModal('createUserModal')"
+                    class="bg-blue-500 text-white px-4 py-2 rounded mb-6">Create User</button>
 
                 <!-- List of Users -->
                 <h3 class="text-xl font-bold mb-4">Users</h3>
@@ -178,9 +179,11 @@
                                 <td class="py-2 px-4 border-b text-gray-700">{{ $user->role }}</td>
                                 <td class="py-2 px-4 border-b">
                                     <!-- Update User Button -->
-                                    <button onclick="toggleModal('updateUserModal{{ $user->id }}')" class="bg-yellow-500 text-white px-2 py-1 rounded">Update</button>
+                                    <button onclick="toggleModal('updateUserModal{{ $user->id }}')"
+                                        class="bg-yellow-500 text-white px-2 py-1 rounded">Update</button>
                                     <!-- Delete User Button -->
-                                    <button onclick="toggleModal('deleteUserModal{{ $user->id }}')" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                                    <button onclick="toggleModal('deleteUserModal{{ $user->id }}')"
+                                        class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -189,91 +192,229 @@
             </div>
 
             <!-- Create User Modal -->
-            <div id="createUserModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-                <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-                    <div class="mt-3 text-center">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Create User</h3>
-                        <form action="{{ route('users.store') }}" method="POST" class="mt-2">
-                            @csrf
-                            <div class="space-y-4">
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                    <input type="email" name="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md" required>
-                                </div>
-                                <div>
-                                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                                    <input type="password" name="password" id="password" class="mt-1 block w-full border border-gray-300 rounded-md" required>
-                                </div>
-                                <div>
-                                    <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
-                                    <select name="role" id="role" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                        <option value="admin">Admin</option>
-                                        <option value="member">Member</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="universitas" class="block text-sm font-medium text-gray-700">Universitas</label>
-                                    <input type="text" name="universitas" id="universitas" class="mt-1 block w-full border border-gray-300 rounded-md" required>
-                                </div>
-                                <div>
-                                    <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
-                                    <input type="text" name="nama" id="nama" class="mt-1 block w-full border border-gray-300 rounded-md" required>
-                                </div>
-                                <div>
-                                    <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
-                                    <textarea name="alamat" id="alamat" class="mt-1 block w-full border border-gray-300 rounded-md" required></textarea>
-                                </div>
-                                <div>
-                                    <label for="nim" class="block text-sm font-medium text-gray-700">NIM (optional)</label>
-                                    <input type="text" name="nim" id="nim" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                </div>
-                                <div>
-                                    <label for="nomor_telpon" class="block text-sm font-medium text-gray-700">Nomor Telpon</label>
-                                    <input type="text" name="nomor_telpon" id="nomor_telpon" class="mt-1 block w-full border border-gray-300 rounded-md" required>
-                                </div>
-                                <div>
-                                    <label for="pekerjaan" class="block text-sm font-medium text-gray-700">Pekerjaan</label>
-                                    <input type="text" name="pekerjaan" id="pekerjaan" class="mt-1 block w-full border border-gray-300 rounded-md" required>
-                                </div>
-                                <div>
-                                    <label for="divisi" class="block text-sm font-medium text-gray-700">Divisi</label>
-                                    <select name="divisi" id="divisi" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                        <option value="pendidikan">Pendidikan</option>
-                                        <option value="rsdm">RSDM</option>
-                                        <option value="kominfo">Kominfo</option>
-                                        <option value="litbang">Litbang</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="jabatan" class="block text-sm font-medium text-gray-700">Jabatan</label>
-                                    <select name="jabatan" id="jabatan" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                        <option value="ketua_divisi">Ketua Divisi</option>
-                                        <option value="wakil_divisi">Wakil Divisi</option>
-                                        <option value="anggota_divisi">Anggota Divisi</option>
-                                        <option value="anggota_bph">Anggota BPH</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="periode" class="block text-sm font-medium text-gray-700">Periode</label>
-                                    <select name="periode" id="periode" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                        <option value="2023-2024">2023-2024</option>
-                                        <option value="2024-2025">2024-2025</option>
-                                        <option value="2025-2026">2025-2026</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mt-4 flex justify-between">
-                                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Create User</button>
-                                <button type="button" onclick="toggleModal('createUserModal')" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
-                            </div>
-                        </form>
+            <div id="createUserModal"
+                class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-100 flex items-center justify-center">
+                <div class="relative top-20 mx-auto p-5 border w-[800px] shadow-lg rounded-md bg-white">
+                    <!-- Header -->
+                    <div class="bg-gradient-to-r from-blue-900 to-blue-500 -m-5 p-6 mb-6 rounded-t-md">
+                        <h1 class="text-2xl font-bold text-white">MEMBERS FORM</h1>
+                        <p class="text-blue-100 text-sm">HIMVOTE</p>
                     </div>
+
+                    <!-- Form -->
+                    <form action="{{ route('users.store') }}" method="POST" class="space-y-6">
+                        @csrf
+
+                        <div class="grid grid-cols-2 gap-6">
+                            <!-- Personal Information Section -->
+                            <div class="col-span-2">
+                                <h2 class="text-lg font-semibold bg-blue-900 text-white px-4 py-2 rounded">
+                                    PERSONAL INFORMATION
+                                </h2>
+                            </div>
+
+                            <!-- Email & Password -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" name="email" id="email"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                    value="{{ old('email') }}" required>
+                                @error('email')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                                <input type="password" name="password" id="password"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                    required>
+                                @error('password')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Role & University -->
+                            <div>
+                                <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+                                <select name="role" id="role"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2">
+                                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
+                                    </option>
+                                    <option value="member" {{ old('role') == 'member' ? 'selected' : '' }}>Member
+                                    </option>
+                                </select>
+                                @error('role')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="universitas"
+                                    class="block text-sm font-medium text-gray-700">Universitas</label>
+                                <input type="text" name="universitas" id="universitas"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                    value="{{ old('universitas') }}" required>
+                                @error('universitas')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Name -->
+                            <div>
+                                <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
+                                <input type="text" name="nama" id="nama"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                    value="{{ old('nama') }}" required>
+                                @error('nama')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- NIM -->
+                            <div>
+                                <label for="nim" class="block text-sm font-medium text-gray-700">NIM
+                                    (optional)</label>
+                                <input type="text" name="nim" id="nim"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                    value="{{ old('nim') }}">
+                                @error('nim')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Address -->
+                            <div class="col-span-2">
+                                <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
+                                <textarea name="alamat" id="alamat" rows="3"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2" required>{{ old('alamat') }}</textarea>
+                                @error('alamat')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Phone & Job -->
+                            <div>
+                                <label for="nomor_telpon" class="block text-sm font-medium text-gray-700">Nomor
+                                    Telpon</label>
+                                <input type="tel" name="nomor_telpon" id="nomor_telpon"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                    value="{{ old('nomor_telpon') }}" required>
+                                @error('nomor_telpon')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="pekerjaan"
+                                    class="block text-sm font-medium text-gray-700">Pekerjaan</label>
+                                <input type="text" name="pekerjaan" id="pekerjaan"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                    value="{{ old('pekerjaan') }}" required>
+                                @error('pekerjaan')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Division -->
+                            <div>
+                                <label for="divisi" class="block text-sm font-medium text-gray-700">Divisi</label>
+                                <select name="divisi" id="divisi"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2">
+                                    <option value="pendidikan" {{ old('divisi') == 'pendidikan' ? 'selected' : '' }}>
+                                        Pendidikan</option>
+                                    <option value="rsdm" {{ old('divisi') == 'rsdm' ? 'selected' : '' }}>RSDM
+                                    </option>
+                                    <option value="kominfo" {{ old('divisi') == 'kominfo' ? 'selected' : '' }}>Kominfo
+                                    </option>
+                                    <option value="litbang" {{ old('divisi') == 'litbang' ? 'selected' : '' }}>Litbang
+                                    </option>
+                                </select>
+                                @error('divisi')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Position -->
+                            <div>
+                                <label for="jabatan" class="block text-sm font-medium text-gray-700">Jabatan</label>
+                                <select name="jabatan" id="jabatan"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2">
+                                    <option value="ketua_divisi"
+                                        {{ old('jabatan') == 'ketua_divisi' ? 'selected' : '' }}>Ketua Divisi</option>
+                                    <option value="wakil_divisi"
+                                        {{ old('jabatan') == 'wakil_divisi' ? 'selected' : '' }}>Wakil Divisi</option>
+                                    <option value="anggota_divisi"
+                                        {{ old('jabatan') == 'anggota_divisi' ? 'selected' : '' }}>Anggota Divisi
+                                    </option>
+                                    <option value="anggota_bph"
+                                        {{ old('jabatan') == 'anggota_bph' ? 'selected' : '' }}>Anggota BPH</option>
+                                </select>
+                                @error('jabatan')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Period -->
+                            <div class="col-span-2">
+                                <label for="periode" class="block text-sm font-medium text-gray-700">Periode</label>
+                                <select name="periode" id="periode"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2">
+                                    <option value="2023-2024" {{ old('periode') == '2023-2024' ? 'selected' : '' }}>
+                                        2023-2024</option>
+                                    <option value="2024-2025" {{ old('periode') == '2024-2025' ? 'selected' : '' }}>
+                                        2024-2025</option>
+                                    <option value="2025-2026" {{ old('periode') == '2025-2026' ? 'selected' : '' }}>
+                                        2025-2026</option>
+                                </select>
+                                @error('periode')
+                                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="mt-6 flex justify-end space-x-3 pt-6 border-t">
+                            <button type="button" onclick="toggleModal('createUserModal')"
+                                class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
+                                Cancel
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                                Create User
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
+            @if (session('success'))
+                <p class="text-green-500 text-sm">{{ session('success') }}</p>
+            @endif
+
+            @if ($errors->any())
+                <ul class="text-red-500 text-sm">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+
+
+            <script>
+                function toggleModal(modalId) {
+                    const modal = document.getElementById(modalId);
+                    if (modal.classList.contains('hidden')) {
+                        modal.classList.remove('hidden');
+                    } else {
+                        modal.classList.add('hidden');
+                    }
+                }
+            </script>
 
             <!-- Update User Modal -->
             @foreach ($users as $user)
-                <div id="updateUserModal{{ $user->id }}" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+                <div id="updateUserModal{{ $user->id }}"
+                    class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
                     <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
                         <div class="mt-3 text-center">
                             <h3 class="text-lg leading-6 font-medium text-gray-900">Update User</h3>
@@ -281,100 +422,177 @@
                                 @csrf
                                 <div class="space-y-4">
                                     <div>
-                                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                        <input type="email" name="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ old('email', $user->email) }}" required>
-                                        <input type="email" name="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ $user->email }}" required>
+                                        <label for="email"
+                                            class="block text-sm font-medium text-gray-700">Email</label>
+                                        <input type="email" name="email" id="email"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ old('email', $user->email) }}" required>
+                                        <input type="email" name="email" id="email"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ $user->email }}" required>
                                     </div>
                                     <div>
-                                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                                        <input type="password" name="password" id="password" class="mt-1 block w-full border border-gray-300 rounded-md">
+                                        <label for="password"
+                                            class="block text-sm font-medium text-gray-700">Password</label>
+                                        <input type="password" name="password" id="password"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md">
                                     </div>
                                     <div>
-                                        <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
-                                        <select name="role" id="role" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                                            <option value="member" {{ $user->role == 'member' ? 'selected' : '' }}>Member</option>
+                                        <label for="role"
+                                            class="block text-sm font-medium text-gray-700">Role</label>
+                                        <select name="role" id="role"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md">
+                                            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>
+                                                Admin</option>
+                                            <option value="member" {{ $user->role == 'member' ? 'selected' : '' }}>
+                                                Member</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="universitas" class="block text-sm font-medium text-gray-700">Universitas</label>
-                                        <input type="text" name="universitas" id="universitas" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ old('universitas', $user->universitas) }}">
-                                        <input type="text" name="universitas" id="universitas" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ $user->universitas }}">
+                                        <label for="universitas"
+                                            class="block text-sm font-medium text-gray-700">Universitas</label>
+                                        <input type="text" name="universitas" id="universitas"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ old('universitas', $user->universitas) }}">
+                                        <input type="text" name="universitas" id="universitas"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ $user->universitas }}">
                                     </div>
                                     <div>
-                                        <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
-                                        <input type="text" name="nama" id="nama" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ old('nama', $user->nama) }}">
-                                        <input type="text" name="nama" id="nama" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ $user->nama }}">
+                                        <label for="nama"
+                                            class="block text-sm font-medium text-gray-700">Nama</label>
+                                        <input type="text" name="nama" id="nama"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ old('nama', $user->nama) }}">
+                                        <input type="text" name="nama" id="nama"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ $user->nama }}">
                                     </div>
                                     <div>
-                                        <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
+                                        <label for="alamat"
+                                            class="block text-sm font-medium text-gray-700">Alamat</label>
                                         <textarea name="alamat" id="alamat" class="mt-1 block w-full border border-gray-300 rounded-md">{{ old('alamat', $user->alamat) }}</textarea>
                                         <textarea name="alamat" id="alamat" class="mt-1 block w-full border border-gray-300 rounded-md">{{ $user->alamat }}</textarea>
                                     </div>
                                     <div>
-                                        <label for="nim" class="block text-sm font-medium text-gray-700">NIM (optional)</label>
-                                        <input type="text" name="nim" id="nim" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ old('nim', $user->nim) }}">
-                                        <input type="text" name="nim" id="nim" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ $user->nim }}">
+                                        <label for="nim" class="block text-sm font-medium text-gray-700">NIM
+                                            (optional)</label>
+                                        <input type="text" name="nim" id="nim"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ old('nim', $user->nim) }}">
+                                        <input type="text" name="nim" id="nim"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ $user->nim }}">
                                     </div>
                                     <div>
-                                        <label for="nomor_telpon" class="block text-sm font-medium text-gray-700">Nomor Telpon</label>
-                                        <input type="text" name="nomor_telpon" id="nomor_telpon" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ old('nomor_telpon', $user->nomor_telpon) }}">
-                                        <input type="text" name="nomor_telpon" id="nomor_telpon" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ $user->nomor_telpon }}">
+                                        <label for="nomor_telpon"
+                                            class="block text-sm font-medium text-gray-700">Nomor Telpon</label>
+                                        <input type="text" name="nomor_telpon" id="nomor_telpon"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ old('nomor_telpon', $user->nomor_telpon) }}">
+                                        <input type="text" name="nomor_telpon" id="nomor_telpon"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ $user->nomor_telpon }}">
                                     </div>
                                     <div>
-                                        <label for="pekerjaan" class="block text-sm font-medium text-gray-700">Pekerjaan</label>
-                                        <input type="text" name="pekerjaan" id="pekerjaan" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ old('pekerjaan', $user->pekerjaan) }}">
-                                        <input type="text" name="pekerjaan" id="pekerjaan" class="mt-1 block w-full border border-gray-300 rounded-md" value="{{ $user->pekerjaan }}">
+                                        <label for="pekerjaan"
+                                            class="block text-sm font-medium text-gray-700">Pekerjaan</label>
+                                        <input type="text" name="pekerjaan" id="pekerjaan"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ old('pekerjaan', $user->pekerjaan) }}">
+                                        <input type="text" name="pekerjaan" id="pekerjaan"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md"
+                                            value="{{ $user->pekerjaan }}">
                                     </div>
                                     <div>
-                                        <label for="divisi" class="block text-sm font-medium text-gray-700">Divisi</label>
-                                        <select name="divisi" id="divisi" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                            <option value="pendidikan" {{ $user->divisi == 'pendidikan' ? 'selected' : '' }}>Pendidikan</option>
-                                            <option value="rsdm" {{ $user->divisi == 'rsdm' ? 'selected' : '' }}>RSDM</option>
-                                            <option value="kominfo" {{ $user->divisi == 'kominfo' ? 'selected' : '' }}>Kominfo</option>
-                                            <option value="litbang" {{ $user->divisi == 'litbang' ? 'selected' : '' }}>Litbang</option>
+                                        <label for="divisi"
+                                            class="block text-sm font-medium text-gray-700">Divisi</label>
+                                        <select name="divisi" id="divisi"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md">
+                                            <option value="pendidikan"
+                                                {{ $user->divisi == 'pendidikan' ? 'selected' : '' }}>Pendidikan
+                                            </option>
+                                            <option value="rsdm" {{ $user->divisi == 'rsdm' ? 'selected' : '' }}>
+                                                RSDM</option>
+                                            <option value="kominfo"
+                                                {{ $user->divisi == 'kominfo' ? 'selected' : '' }}>Kominfo</option>
+                                            <option value="litbang"
+                                                {{ $user->divisi == 'litbang' ? 'selected' : '' }}>Litbang</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="jabatan" class="block text-sm font-medium text-gray-700">Jabatan</label>
-                                        <select name="jabatan" id="jabatan" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                            <option value="ketua_divisi" {{ $user->jabatan == 'ketua_divisi' ? 'selected' : '' }}>Ketua Divisi</option>
-                                            <option value="wakil_divisi" {{ $user->jabatan == 'wakil_divisi' ? 'selected' : '' }}>Wakil Divisi</option>
-                                            <option value="anggota_divisi" {{ $user->jabatan == 'anggota_divisi' ? 'selected' : '' }}>Anggota Divisi</option>
-                                            <option value="anggota_bph" {{ $user->jabatan == 'anggota_bph' ? 'selected' : '' }}>Anggota BPH</option>
+                                        <label for="jabatan"
+                                            class="block text-sm font-medium text-gray-700">Jabatan</label>
+                                        <select name="jabatan" id="jabatan"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md">
+                                            <option value="ketua_divisi"
+                                                {{ $user->jabatan == 'ketua_divisi' ? 'selected' : '' }}>Ketua Divisi
+                                            </option>
+                                            <option value="wakil_divisi"
+                                                {{ $user->jabatan == 'wakil_divisi' ? 'selected' : '' }}>Wakil Divisi
+                                            </option>
+                                            <option value="anggota_divisi"
+                                                {{ $user->jabatan == 'anggota_divisi' ? 'selected' : '' }}>Anggota
+                                                Divisi</option>
+                                            <option value="anggota_bph"
+                                                {{ $user->jabatan == 'anggota_bph' ? 'selected' : '' }}>Anggota BPH
+                                            </option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="periode" class="block text-sm font-medium text-gray-700">Periode</label>
-                                        <select name="periode" id="periode" class="mt-1 block w-full border border-gray-300 rounded-md">
-                                            <option value="2023-2024" {{ $user->periode == '2023-2024' ? 'selected' : '' }}>2023-2024</option>
-                                            <option value="2024-2025" {{ $user->periode == '2024-2025' ? 'selected' : '' }}>2024-2025</option>
-                                            <option value="2025-2026" {{ $user->periode == '2025-2026' ? 'selected' : '' }}>2025-2026</option>
+                                        <label for="periode"
+                                            class="block text-sm font-medium text-gray-700">Periode</label>
+                                        <select name="periode" id="periode"
+                                            class="mt-1 block w-full border border-gray-300 rounded-md">
+                                            <option value="2023-2024"
+                                                {{ $user->periode == '2023-2024' ? 'selected' : '' }}>2023-2024
+                                            </option>
+                                            <option value="2024-2025"
+                                                {{ $user->periode == '2024-2025' ? 'selected' : '' }}>2024-2025
+                                            </option>
+                                            <option value="2025-2026"
+                                                {{ $user->periode == '2025-2026' ? 'selected' : '' }}>2025-2026
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="mt-4 flex justify-between">
-                                    <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">Update User</button>
-            <!-- Action User Modal -->
-            @foreach ($users as $user)
-                <div id="actionUserModal{{ $user->id }}" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-                    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-                        <div class="mt-3 text-center">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Action User</h3>
-                            <p class="text-sm text-gray-500">Choose an action for this user.</p>
-                            <form action="#" method="POST" class="mt-4">
-                                @csrf
-                                <div class="flex justify-between">
-                                    <button type="submit" formaction="{{ route('users.update', $user->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded">Update User</button>
-                                    <button type="submit" formaction="{{ route('users.destroy', $user->id) }}" class="bg-red-500 text-white px-4 py-2 rounded">Delete User</button>
-                                    <button type="button" onclick="toggleModal('actionUserModal{{ $user->id }}')" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-                                    <button type="button" onclick="toggleModal('updateUserModal{{ $user->id }}')" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+                                    <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">Update
+                                        User</button>
+                                    <!-- Action User Modal -->
+                                    @foreach ($users as $user)
+                                        <div id="actionUserModal{{ $user->id }}"
+                                            class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+                                            <div
+                                                class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                                                <div class="mt-3 text-center">
+                                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Action User
+                                                    </h3>
+                                                    <p class="text-sm text-gray-500">Choose an action for this user.
+                                                    </p>
+                                                    <form action="#" method="POST" class="mt-4">
+                                                        @csrf
+                                                        <div class="flex justify-between">
+                                                            <button type="submit"
+                                                                formaction="{{ route('users.update', $user->id) }}"
+                                                                class="bg-yellow-500 text-white px-4 py-2 rounded">Update
+                                                                User</button>
+                                                            <button type="submit"
+                                                                formaction="{{ route('users.destroy', $user->id) }}"
+                                                                class="bg-red-500 text-white px-4 py-2 rounded">Delete
+                                                                User</button>
+                                                            <button type="button"
+                                                                onclick="toggleModal('actionUserModal{{ $user->id }}')"
+                                                                class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    <button type="button"
+                                        onclick="toggleModal('updateUserModal{{ $user->id }}')"
+                                        class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -384,7 +602,8 @@
 
             <!-- Delete User Modal -->
             @foreach ($users as $user)
-                <div id="deleteUserModal{{ $user->id }}" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+                <div id="deleteUserModal{{ $user->id }}"
+                    class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
                     <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
                         <div class="mt-3 text-center">
                             <h3 class="text-lg leading-6 font-medium text-gray-900">Delete User</h3>
@@ -392,8 +611,11 @@
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="mt-4">
                                 @csrf
                                 <div class="flex justify-between">
-                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Delete User</button>
-                                    <button type="button" onclick="toggleModal('deleteUserModal{{ $user->id }}')" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Delete
+                                        User</button>
+                                    <button type="button"
+                                        onclick="toggleModal('deleteUserModal{{ $user->id }}')"
+                                        class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
                                 </div>
                             </form>
                         </div>

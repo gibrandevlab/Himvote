@@ -29,7 +29,11 @@ class AuthController extends Controller
                 'notification' => 'Pengguna melakukan login',
             ]);
 
-            return redirect()->intended('dashboard');
+            if ($user->role == 'admin') {
+                return redirect()->intended('dashboard');
+            } else {
+                return redirect()->intended('vote');
+            }
         }
 
         throw ValidationException::withMessages([
@@ -56,7 +60,11 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('dashboard');
+        if ($user->role == 'admin') {
+            return redirect()->intended('dashboard');
+        } else {
+            return redirect()->intended('vote');
+        }
     }
 
     public function logout(Request $request)

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a9372b1ff7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
+    @vite('resources/css/login.css')
+    @vite('resources/js/app.js')
     <title>Himvote</title>
   </head>
   <body>

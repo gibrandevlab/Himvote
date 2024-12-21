@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('vote', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->unique()->constrained()->onDelete('cascade');
             $table->integer('paslon'); // Nomor pasangan calon
             $table->timestamps();
         });
@@ -27,3 +27,4 @@ return new class extends Migration
         Schema::dropIfExists('votes');
     }
 };
+
